@@ -1,13 +1,10 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Permissions
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 How to set up file permissions for Laravel?
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Laravel – bootstrap/cache/services.php missing
 Laravel – bootstrap/cache directory must be present and writable
 Laravel – bootstrap/frameworks/sessions.php, views.php, services.php missing
-
-If we are getting any file permission error; as follows:
 
 sudo chgrp -R www-data /var/www/html/laravel
 sudo chmod -R g+rw /var/www/html/laravel
@@ -30,6 +27,8 @@ chmod -R guo+w storage
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Server Error 500 when accessing Laravel (Solve)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If we are getting any file permission error; as follows:
 Failed to clear cache. make sure you have the appropriate permissions
 
 Adjust the permissions of storage and bootstrap/cache.

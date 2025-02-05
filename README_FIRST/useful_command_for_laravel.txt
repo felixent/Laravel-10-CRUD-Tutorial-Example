@@ -1,0 +1,98 @@
++++++++++++++++++++++++++++++++++++++
+::: Required PHP packages :::
++++++++++++++++++++++++++++++++++++++
+sudo apt-get install git curl openssl php8.1-cli  php8.1-common php8.1-xml php8.1-bcmath php8.1-mbstring php8.1-zip php8.1-curl php8.1-mysql php8.1-json -y
+
++++++++++++++++++++++++++++++++++++++
+::: Clearing Composer Cache :::
++++++++++++++++++++++++++++++++++++++
+(1)-Delete cache dir
+
+ ~/.composer/cache or ~/.cache/composer
+
+(2)-Make exact path - 
+
+composer config cache-dir
+
+(3)-Clear the package files cache, 
+
+composer clear-cache --package
+
+(4)-Clear metadata cache:
+
+composer clear-cache --metadata
+
+(5)-Clearing All
+$ composer dump-autoload
+$ composer clear-cache
+$ composer clearcache
+$ composer cc
+
+(6)-Clearing NPM Cache
+$ npm cache clean --force
+
++++++++++++++++++++++++++++++++++++++
+::: Artisan Cache Commands :::
++++++++++++++++++++++++++++++++++++++
+
+(1)-Clearing Configuration Cache 
+php artisan config:clear
+php artisan config:cache
+
+(2)-Clearing Route Cache
+php artisan route:clear
+php artisan route:cache
+
+(3)-Clearing View Cache
+php artisan view:clear
+php artisan view:cache
+
+(4)-Clearing Events Cache
+php artisan event:clear
+php artisan event:cache
+ 
+(5)-Clearing Application Cache
+php artisan cache:clear
+
+ *** typically stored in /storage/framework/cache/data/. The effect is similar to calling the Cache::flush(); Facade method via code.
+
+    ❗️ This command will NOT clear any config, route, or view cache, which are stored in /bootstrap/cache/ directory.
+
+(6)-Clearing All Cache 
+php artisan optimize:clear
+
+ *** ❗️ The Compiled services and packages files removed! can be run individually via $ php artisan clear-compiled command. It is used to remove the compiled class file in the framework.
+
+(7)-View all command list
+$ php artisan list
+
++++++++++++++++++++++++++++++++++++++
+::: APT/APT-GET Packages Command :::
++++++++++++++++++++++++++++++++++++++
+
+***(Remove specified package(s), all auto-installed packages and all their configs:)
+
+sudo apt-get -s purge <PKG> | grep '^ ' | tr -d '*' | xargs -o sudo apt-get purge
+
+Or as root:
+
+sudo apt-get purge apt-get -s purge <PKG> | grep '^ ' | tr -d '*'
+
+ ***(Substitute <PKG> with package or packages you want to remove completely.)
+
++++++++++++++++++++++++++++++++++++++
+::: Fully Remove packages :::
++++++++++++++++++++++++++++++++++++++
+
+sudo apt-get --purge autoremove PACKAGENAME
+sudo apt-get purge <PACKAGENAME>
+sudo apt-get purge $(apt-cache depends <PACKAGENAME> | awk '{ print $2 }' | tr '\n' ' ')
+sudo apt-get autoremove
+sudo apt-get update
+sudo apt-get check
+sudo apt-get -f install
+sudo apt-get autoclean
+
+Restart if needed
+
+sudo shutdown -r now
